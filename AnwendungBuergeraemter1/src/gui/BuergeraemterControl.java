@@ -21,11 +21,12 @@ public class BuergeraemterControl {
 	   		if("csv".equals(typ)){
 	   			buergeraemterModel.schreibeBuergeraemterInCsvDatei();
 	   			buergeraemterView.zeigeInformationsfensterAn(
-	   				"Die B�rger�mter wurden gespeichert!");
+	   				"Die Bürgerämter wurden gespeichert!");
 	   		}
 	   		else{
+	   			buergeraemterModel.schreibeBuergeraemterInTxtDatei();
 	   			buergeraemterView.zeigeInformationsfensterAn(
-	   				"Noch nicht implementiert!");
+		   				"Die Bürgerämter wurden gespeichert!");
 	   		}
 	    } 
 		catch(IOException exc){
