@@ -1,19 +1,21 @@
-package gui;
+package gui.guiBuergeraemter;
 
 import java.io.IOException;
 
 import business.BuergeraemterModel;
 import javafx.stage.Stage;
+import ownUtil.MyObserver;
 
-public class BuergeraemterControl {
+public class BuergeraemterControl implements MyObserver{
 	
 	private BuergeraemterView buergeraemterView;
 	private BuergeraemterModel buergeraemterModel;
 
 	public BuergeraemterControl(Stage primaryStage){
-		this.buergeraemterModel = new BuergeraemterModel();
+		this.buergeraemterModel = BuergeraemterModel.getInstanz();
 		this.buergeraemterView = new BuergeraemterView(this, primaryStage, 
 				buergeraemterModel);
+		buergeraemterModel.addObserver(this);
 	}
 	
 	void schreibeBuergeraemterInDatei(String typ){
@@ -21,12 +23,12 @@ public class BuergeraemterControl {
 	   		if("csv".equals(typ)){
 	   			buergeraemterModel.schreibeBuergeraemterInCsvDatei();
 	   			buergeraemterView.zeigeInformationsfensterAn(
-	   				"Die BÃ¼rgerÃ¤mter wurden gespeichert!");
+	   				"Die Bürgerämter wurden gespeichert!");
 	   		}
 	   		else{
 	   			buergeraemterModel.schreibeBuergeraemterInTxtDatei();
 	   			buergeraemterView.zeigeInformationsfensterAn(
-		   				"Die BÃ¼rgerÃ¤mter wurden gespeichert!");
+		   				"Die Bürgerämter wurden gespeichert!");
 	   		}
 	    } 
 		catch(IOException exc){
@@ -38,5 +40,11 @@ public class BuergeraemterControl {
 				"Unbekannter Fehler beim Speichern!");
 		}
     }
+
+	@Override
+	public void update() {
+		buergeraemterView.zeigeBuergeraemterAn();
+		
+	}
 
 }
