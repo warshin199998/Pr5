@@ -1,9 +1,8 @@
 package business;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.Observer;
-
 import fabrikMethode.ConcreteCreatorCsv;
 import fabrikMethode.ConcreteCreatorTxt;
 import fabrikMethode.Creator;
@@ -15,6 +14,8 @@ public class BuergeraemterModel implements MyObservable{
  	
 	LinkedList<MyObserver> liste = new LinkedList<MyObserver>();
 	
+	private ArrayList<Buergeramt> buergeraemterList = new ArrayList<Buergeramt>();
+	
 	public static BuergeraemterModel instanz=null;
 	
 	public static BuergeraemterModel getInstanz() {
@@ -25,6 +26,14 @@ public class BuergeraemterModel implements MyObservable{
 	}
 	
 	
+	public ArrayList<Buergeramt> getBuergeraemterList() {
+		return buergeraemterList;
+	}
+
+
+	
+
+
 	private BuergeraemterModel () {
 		
 	}
@@ -35,23 +44,31 @@ public class BuergeraemterModel implements MyObservable{
 		return this.buergeramt;
 	}
 	
-	public void setBuergeramt(Buergeramt buergeramt) {
-		this.buergeramt = buergeramt;
-		notifyObserver();
-	}
+	  public void addBuergeramt(Buergeramt buergeramt) {
+	        buergeraemterList.add(buergeramt);
+	        notifyObserver();
+	    }
  		
 	public void schreibeBuergeraemterInCsvDatei()
 	    throws IOException{
 		Creator creator =new ConcreteCreatorCsv();
 		Product writer = creator.factoryMethod();
-		writer.fuegeInDateiHinzu(buergeramt);
+		for (Buergeramt buergeramt : buergeraemterList) {
+	        writer.fuegeInDateiHinzu(buergeramt);
+	    }
+	 
+		
+		
 		writer.schliessDatei();
 
  	}
 	public void schreibeBuergeraemterInTxtDatei()throws IOException{
 		Creator creator =new ConcreteCreatorTxt();
 		Product writer = creator.factoryMethod();
-		writer.fuegeInDateiHinzu(buergeramt);
+		for (Buergeramt buergeramt : buergeraemterList) {
+	        writer.fuegeInDateiHinzu(buergeramt);
+	    }
+		
 		writer.schliessDatei();
 	}
 
