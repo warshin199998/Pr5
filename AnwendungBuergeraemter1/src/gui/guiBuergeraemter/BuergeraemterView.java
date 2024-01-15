@@ -1,7 +1,7 @@
 package gui.guiBuergeraemter;
    
-import business.BuergeraemterModel;
-import business.Buergeramt;
+import business.Buergeramt.BuergeraemterModel;
+import business.Buergeramt.Buergeramt;
 import javafx.event.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -160,7 +160,7 @@ public class BuergeraemterView {
    	        Float.parseFloat(txtGeoeffnetBis.getText()),
     		txtStrasseHNr.getText(),
     		txtDienstleistungen.getText().split(";")));
-   		    zeigeInformationsfensterAn("Das Bürgeramt wurde aufgenommen!");
+   		    zeigeInformationsfensterAn("Das Bï¿½rgeramt wurde aufgenommen!");
       	}
    	    catch(Exception exc){
    		    zeigeFehlermeldungsfensterAn(exc.getMessage());

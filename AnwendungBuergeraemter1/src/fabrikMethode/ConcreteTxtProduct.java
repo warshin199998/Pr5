@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import business.Buergeramt;
+import business.Buergeramt.Buergeramt;
 
 public class ConcreteTxtProduct  extends Product {
 	BufferedWriter ausgabe;
@@ -13,13 +13,16 @@ public class ConcreteTxtProduct  extends Product {
 		ausgabe =new BufferedWriter(new FileWriter("Buergeraemter.txt",true));
 		
 	}
-
+	//
 	@Override
-	public void fuegeInDateiHinzu(Buergeramt buergeramt) throws IOException {
+	public void fuegeInDateiHinzu(Object object) throws IOException {
+		//
+		Buergeramt buergeramt = (Buergeramt) object;
+		//
 		ausgabe.write("Daten des buergeramts\n ");
 		ausgabe.write("Name des buergeramts\t"+ buergeramt.getName() );
-		ausgabe.write("\nÖffnungszeit des buergeramts:\t "+ buergeramt.getGeoeffnetVon() + " "+ buergeramt.getGeoeffnetBis());
-		ausgabe.write("\nStraße und Hausnummer des buergeramts:\t"+buergeramt.getStrasseHNr());
+		ausgabe.write("\nï¿½ffnungszeit des buergeramts:\t "+ buergeramt.getGeoeffnetVon() + " "+ buergeramt.getGeoeffnetBis());
+		ausgabe.write("\nStraï¿½e und Hausnummer des buergeramts:\t"+buergeramt.getStrasseHNr());
 		ausgabe.write("\nDienstleistungen des buergeramts:\t"+ buergeramt.getDienstleistungenAlsString('v'));
 
 	}

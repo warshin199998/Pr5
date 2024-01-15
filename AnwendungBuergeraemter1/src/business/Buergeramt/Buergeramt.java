@@ -1,8 +1,6 @@
-package business;
+package business.Buergeramt;
 
 import java.util.ArrayList;
-
-import com.sun.javafx.scene.control.skin.VirtualFlow.ArrayLinkedList;
 
 public class Buergeramt {
 	

@@ -3,8 +3,8 @@ package fabrikMethode;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import business.Buergeramt.Buergeramt;
 
-import business.Buergeramt;
 
 public class ConcreteCsvProduct extends Product {
 	
@@ -17,12 +17,13 @@ public class ConcreteCsvProduct extends Product {
 	
 
 	@Override
-	public void fuegeInDateiHinzu(Buergeramt buergeramt) throws IOException {
-
+	//
+	public void fuegeInDateiHinzu(Object object) throws IOException {
+		Buergeramt buergeramt = (Buergeramt) object;
 		aus.write(buergeramt.gibBuergeramtZurueck(';'));
 
 	}
-
+	//
 	@Override
 	public void schliessDatei() throws IOException {
 

@@ -2,7 +2,7 @@ package gui.guiBuergeraemter;
 
 import java.io.IOException;
 
-import business.BuergeraemterModel;
+import business.Buergeramt.BuergeraemterModel;
 import javafx.stage.Stage;
 import ownUtil.MyObserver;
 
@@ -23,12 +23,12 @@ public class BuergeraemterControl implements MyObserver{
 	   		if("csv".equals(typ)){
 	   			buergeraemterModel.schreibeBuergeraemterInCsvDatei();
 	   			buergeraemterView.zeigeInformationsfensterAn(
-	   				"Die Bürgerämter wurden gespeichert!");
+	   				"Die Bï¿½rgerï¿½mter wurden gespeichert!");
 	   		}
 	   		else{
 	   			buergeraemterModel.schreibeBuergeraemterInTxtDatei();
 	   			buergeraemterView.zeigeInformationsfensterAn(
-		   				"Die Bürgerämter wurden gespeichert!");
+		   				"Die Bï¿½rgerï¿½mter wurden gespeichert!");
 	   		}
 	    } 
 		catch(IOException exc){
